@@ -1,0 +1,29 @@
+import os
+import time
+
+def draw_flag(blue_intensity=27):
+    leftside = 5*3
+    middle = 3*3
+    rightside = 10*3
+    length = 18*3
+    
+    for i in range(12):
+        if i < 5:
+            print(f'\u001b[48;5;15m{" " * leftside}\u001b[48;5;{blue_intensity}m{" " * middle}\u001b[48;5;15m{" " * rightside}\u001b[0m')
+        elif 5 <= i <= 7:
+            print(f'\u001b[48;5;{blue_intensity}m{" "* length}\u001b[0m')
+        else:
+            print(f'\u001b[48;5;15m{" " * leftside}\u001b[48;5;{blue_intensity}m{" " * middle}\u001b[48;5;15m{" " * rightside}\u001b[0m')
+
+time.sleep(1)
+for frame in range(10):
+    os.system('cls')
+    
+    intensity = 27 + (frame % 3) * 10 
+    
+    draw_flag(blue_intensity=intensity)
+    time.sleep(0.4)
+
+os.system('cls')
+draw_flag()
+print("Оригинальный флаг Финляндии")
